@@ -3,7 +3,7 @@ package br.com.testes.api.service.impl;
 import br.com.testes.api.domain.User;
 import br.com.testes.api.domain.dto.UserDTO;
 import br.com.testes.api.repository.UserRepository;
-import br.com.testes.api.service.exception.IntegratyViolationException;
+import br.com.testes.api.service.exception.IntegrityViolationException;
 import br.com.testes.api.service.exception.ObjectNotFoundException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -110,7 +110,7 @@ class UserServiceImplTest {
             optionalUser.get().setId(2L);
             service.create(userDTO);
         }catch (Exception ex){
-            assertEquals(IntegratyViolationException.class, ex.getClass());
+            assertEquals(IntegrityViolationException.class, ex.getClass());
             assertEquals("Email já cadastrado!", ex.getMessage());
         }
     }
@@ -137,7 +137,7 @@ class UserServiceImplTest {
             optionalUser.get().setId(2L);
             service.create(userDTO);
         }catch (Exception ex){
-            assertEquals(IntegratyViolationException.class, ex.getClass());
+            assertEquals(IntegrityViolationException.class, ex.getClass());
             assertEquals("Email já cadastrado!", ex.getMessage());
         }
     }

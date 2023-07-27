@@ -1,6 +1,6 @@
 package br.com.testes.api.resource.exception;
 
-import br.com.testes.api.service.exception.IntegratyViolationException;
+import br.com.testes.api.service.exception.IntegrityViolationException;
 import br.com.testes.api.service.exception.ObjectNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,8 +20,8 @@ public class ResourceExceptionHandler {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(error);
     }
 
-    @ExceptionHandler(IntegratyViolationException.class)
-    public ResponseEntity<StandardError> objectNotFound(IntegratyViolationException ex, HttpServletRequest request){
+    @ExceptionHandler(IntegrityViolationException.class)
+    public ResponseEntity<StandardError> integrityViolationException(IntegrityViolationException ex, HttpServletRequest request){
         StandardError error = new StandardError(LocalDateTime.now(),
                 HttpStatus.BAD_REQUEST.value(), ex.getMessage(), request.getRequestURI());
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(error);

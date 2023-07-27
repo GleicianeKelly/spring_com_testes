@@ -4,7 +4,7 @@ import br.com.testes.api.domain.User;
 import br.com.testes.api.domain.dto.UserDTO;
 import br.com.testes.api.repository.UserRepository;
 import br.com.testes.api.service.UserService;
-import br.com.testes.api.service.exception.IntegratyViolationException;
+import br.com.testes.api.service.exception.IntegrityViolationException;
 import br.com.testes.api.service.exception.ObjectNotFoundException;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,7 +52,7 @@ public class UserServiceImpl implements UserService {
     private void findByEmail(UserDTO userDTO){
         Optional<User> user = userRepository.findByEmail(userDTO.getEmail());
         if(user.isPresent() && !user.get().getId().equals(userDTO.getId())){
-            throw new IntegratyViolationException("Email já cadastrado!");
+            throw new IntegrityViolationException("Email já cadastrado!");
         }
     }
 
